@@ -3,18 +3,19 @@ from bs4 import BeautifulSoup
 
 
 
-def pobierz_zawartosc_wszystkich_div(url):
+def getDetails(url):
     response = requests.get(url)
 
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, 'html.parser')
-
+        divy = []
         divy = soup.find_all('li', {'class': 'css-1r0si1e'})
 
         if divy:
             # Iteruj przez wszystkie znalezione divy
-            for index, div_content in enumerate(divy):
-                print(f'Zawartość diva {index + 1}: {div_content.text}')
+            for i in divy:
+                print(i.text)
+            return i.text
         else:
             print(f'Nie znaleziono divów o klasie "css-1r0si1e"')
     else:
@@ -82,6 +83,32 @@ def getMainImage(url):
     else:
         print(f'Błąd podczas pobierania strony. Kod odpowiedzi: {response.status_code}')
 
+# def getLocation(url):
+#     response = requests.get(url)
+#
+#     if response.status_code == 200:
+#         soup = BeautifulSoup(response.text, "html.parser")
+#
+#         finDiv = soup.find('div', {'class': 'css-13l8eec'})
+#
+#         if finDiv:
+#             findLocation = finDiv.find_all('div')  # Use finDiv to narrow down the search
+#             if findLocation:
+#                 location = finDiv.find('p', {'class': 'css-1cju8pu er34gjf0'})
+#
+#                 print(location.text)  # Use 'location' instead of 'findLocation'
+#                 return location.text
+#             else:
+#                 print("nie znaleziono lokalizacji p")
+#         else:
+#             print('nie znaleziono lokalizacji div')
+#     else:
+#         print(f'Błąd podczas przetwarzania strony {response.status_code}')
+
+
+
+
+url = 'https://www.olx.pl/d/oferta/wynajme-mieszkanie-2-pokojowe-ul-folwarczna-poznan-CID3-IDXSAxb.html'
 
 
 
