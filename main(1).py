@@ -2,7 +2,7 @@
 from discord import Intents, Client, Message
 from discord import Embed
 import olx
-TOKEN = 'MTIwMjczOTI5MzIzMjE3NzIwMg.Gdok5x.P1N1hmB06GfEVOr-eUapFL9sXx02i_JE6TyPk8'
+TOKEN = 'Insert your discord bot token'
 
 intents = Intents.default()
 intents.message_content = True
